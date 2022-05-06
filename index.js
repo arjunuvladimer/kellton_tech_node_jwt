@@ -26,12 +26,11 @@ const authRoute = require("./route/auth")
 dotenv.config()
 
 // Connecting the database
-mongoose.connect(
-    process.env.DB_CONNECT,
-    {useNewUrlParser:true},
-    () => console.log("Connected to DB")
-)
 
+mongoose.connect(process.env.DB_CONNECT,{useNewUrlParser:true})
+.then(() => {
+    console.log('Database Connected')
+}).catch(err => console.log(err))
 // Middlewares 
 app.use(express.json(),cors())
 
